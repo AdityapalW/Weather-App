@@ -83,9 +83,53 @@ struct ContentView: View {
                         
                         ScrollViewReader() { scrollViewProxy in
                             ScrollView(.horizontal, showsIndicators: false){
+                                
+                                
+                                
+                                
                                 HStack(spacing: 20){
                                     
-                                    if let weatherData = viewModel.weatherData else{}
+                                    
+                                   
+                        
+                                    
+                                    
+                                    if let weatherData = viewModel.weatherData {
+                                        
+                                        
+                                        VStack{
+                                            Text("Now")
+                                                .font(.system(size: 13, weight: .medium))
+                                                .foregroundColor(.white)
+                                            
+                                            
+                                            Image(systemName : weatherSymbol(for: weatherData.current.weatherCode, index: currentHour))
+                                                .symbolRenderingMode(.multicolor)
+                                                .resizable()
+                                                .aspectRatio(contentMode: .fit)
+                                                .frame(width: 40, height: 40)
+                                            Text("\(Int(weatherData.current.temperature2m))°")
+                                                .font(.system(size: 28, weight: .semibold))
+                                                .foregroundColor(.white)
+                                        }
+                                    
+                                
+                            
+                                        
+                                        
+                                        if let hourly = hourModel.currentTemperature{
+                                            ForEach((currentHour+1)...23, id: \.self) { index in
+                                                HourWeather(index: index, weatherLogo: weatherSymbol(for: hourly.hourly.weatherCode[index], index: index), temp: Int(hourly.hourly.temperature2m[index]))
+                                            }
+                                            ForEach(0...23, id: \.self) { index in
+                                                HourWeather(index: index, weatherLogo: weatherSymbol(for: hourly.hourly.weatherCode[index+24], index: index+24), temp: Int(hourly.hourly.temperature2m[index+24]))
+                                                
+                                                
+                                            }
+                                        }else{} }
+                                else{
+                                 
+                                }
                                 }
                                 .padding(.leading)
                             }
