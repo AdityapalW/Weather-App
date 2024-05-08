@@ -1,4 +1,4 @@
-AdityapalW/WeatherApp# WeatherApp
+# WeatherApp
 
 ## Overview
 
