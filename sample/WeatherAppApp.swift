@@ -1,5 +1,5 @@
 //
-//  sampleApp.swift
+//  WeatherAppApp.swift
 //  sample
 //
 //  Created by Adityapal Waraich on 2024-04-30.
@@ -8,10 +8,12 @@
 import SwiftUI
 
 @main
-struct sampleApp: App {
+struct WeatherAppApp: App {
     var body: some Scene {
-        WindowGroup {
+        WindowGroup{
             ContentView()
         }
+        
     }
 }
+
